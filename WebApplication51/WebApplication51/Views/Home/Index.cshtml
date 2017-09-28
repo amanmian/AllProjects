@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebApplication51.Models.ViewModel>
+
+
+
+<div>
+
+    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
+        Add new Customer
+    </button>
+
+
+    <!-- Modal -->
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Enter Customer Details</h4>
+                </div>
+                <div class="modal-body">
+                    @{
+                        Html.RenderPartial("Create");
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h2>Customer</h2>
+    <table id="customer"class="table table-bordered table-striped">
+        <tr>
+            <td>Id</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>RollNo</td>
+            <td>Class</td>
+            <td>FatherName</td>
+            <td>MotherName</td>
+            <td>Address</td>
+            <td>PhoneNum</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+        var uri = "http://localhost:19110/api/Customers";
+            $(document).ready(function () {
+                $.getJSON(uri)
+                .done(function (data) {
+                    $.each(data, function (key, item) {
+                        $('#customer').append("<tr><td>" + item.Id +  "</td>" + "<td>" + item.FirstName + "</td>" + "<td>" + item.LastName + "</td>" + "<td>" + item.RollNo + '%' + "</td>" + "<td>" + item.Class + "</td>" + "<td>" + item.customerdetails.FatherName + "</td>" + "<td>" + item.customerdetails.MotherName + "</td>" + "<td>" + item.customerdetails.Address + "</td>" + "<td>" + item.customerdetails.PhoneNum + "</td></tr>");
+                    });
+                });
+            });
+
+
+</script>
+
+

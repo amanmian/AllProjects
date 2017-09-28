@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Student Information";
+}
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <style>
+        .table td {
+   text-align: center;   
+}
+        .table th{
+            text-align:center;
+        }
+        .modal-dialog{
+           
+    position: relative;
+    width: auto;
+    margin: 10px;
+
+        }
+    </style>
+</head>
+<body>
+<h2>Student Information</h2>
+    <div>
+        
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                Add new Student
+            </button>
+        
+
+        <!-- Modal -->
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Enter Student Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        @{
+                            Html.RenderPartial("CreatePartial");
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <h2>Student</h2>
+
+    <table id="student" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>F Name</th>
+                <th>L Name</th>
+                <th>Std</th>
+                <th>Group</th>
+                <th>Course</th>
+                <th>Age</th>
+                <th>Area</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>ZipCode</th>
+                <th>Action Links</th>
+            </tr>
+        </thead>
+    </table>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var uri = "http://localhost:59183/api/StudentWebApi";
+            $(document).ready(function () {
+                $.getJSON(uri)
+                .done(function (data) {
+                    $.each(data, function (key, item) {
+                        $('#student').append("<tr><td>" + item.Stud_id + "</td>" + "<td>" + item.Stud_fname + "</td>" + "<td>" + item.Stud_lname + "</td>" + "<td>" + item.Stud_std + "</td>" + "<td>" + item.Stud_group + "</td>" + "<td>" + item.Stud_cousre + "</td>" + "<td>" + item.Age + "</td>" + "<td>" + item.studentdetails0002.Stud_area + "</td>" + "<td>" + item.studentdetails0002.Stud_street + "</td>" + "<td>" + item.studentdetails0002.Stud_city + "</td>" + "<td>" + item.studentdetails0002.Stud_zipcode + "</td>" + "<td>" + '<a href="@Url.Action("Edit","Asset")?id=' + data + '" class="editAsset">Edit</a> | <a href="@Url.Action("Delete","Asset")?id=' + data + '" class="deleteAsset">Delete</a>' + "</td></tr>");
+                    });
+                });
+            });
+        </script>
+</body>
+</html>
+
+

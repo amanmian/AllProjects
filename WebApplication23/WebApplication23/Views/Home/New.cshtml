@@ -1,0 +1,105 @@
+﻿
+
+
+@model WebApplication23.Models.DetailVM
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.datepicker').datepicker({showAnim: "fadeIn"});
+	})
+</script>
+
+
+
+<h2>New User</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group">
+        @Html.LabelFor(m => m.detail.Name)
+        @Html.TextBoxFor(m => m.detail.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.detail.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.detail.Email)
+        @Html.TextBoxFor(m => m.detail.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.detail.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.detail.DateOfBirth)
+        @Html.TextBoxFor(m => m.detail.DateOfBirth, new { @class = "datepicker form-control" })
+        @Html.ValidationMessageFor(m => m.detail.DateOfBirth)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.detail.Country)
+        @Html.DropDownListFor(m => m.detail.Country, new SelectList(Model.List2, "CountryId", "CountryName"), "select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.detail.Country)
+    </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.detail.State)
+
+            @Html.DropDownListFor(m => m.detail.State, new SelectList(Model.List, "StateId", "StateName"), "select", new { @class = "form-control", @onchange = "FillCity()" })
+            @Html.ValidationMessageFor(m => m.detail.State)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.detail.Address)
+
+            @Html.TextBoxFor(m => m.detail.Address, new
+       {
+           @class = "form-control",
+           TextMode = "MultiLine",
+           Columns = "55",
+           Rows = "10",
+           type = "text",
+           required = "required"
+       })
+            @Html.ValidationMessageFor(m => m.detail.Address)
+        </div>
+
+
+        @Html.HiddenFor(m => m.detail.Id)
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="reset" class="btn btn-primary">Restart</button>
+}
+
+
+<script>
+  function FillCity() {
+    var stateId = $('#State').val();
+    $.ajax({
+        url: '/Home/Fillstate',
+        type: "GET",
+        dataType: "JSON",
+        data: { State: StateId },
+        success: function (s1) {
+            $("#Country").html(""); // clear before appending new list
+            $.each(s1, function (i, state) {
+                $("#Country").append(
+                    $('<option></option>').val(state.CountryId).html(state.CountryName));
+            });
+        }
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+

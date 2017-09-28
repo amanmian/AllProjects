@@ -1,0 +1,51 @@
+﻿@using WebApplication2.Models;
+@Model IEnnumerable <Customer>;
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+
+
+
+<h2>
+    @DateTime.Now.ToLongDateString();
+</h2>
+ <table class="table">
+     <thead>
+         <tr>
+             <th>Id</th>
+             <th>Name</th>
+             <th>Email</th>
+             <th>Phone</th>
+            
+    
+         </tr>
+     </thead>
+     <tboby>
+        @foreach (WebApplication2.Models.Customer item in Model)
+        {
+            <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Email
+            </td>
+               
+            
+            <td>
+                @item.Phone
+            </td>
+                <td><a href="#">@item.Edit</a></td>
+                <td><a href="#">@item.Details</a></td>
+                <
+                <td><a href="#">@item.Delete</a></td>
+                </tr>
+        }
+     </tboby>
+ </table>
+<h2>Home</h2>

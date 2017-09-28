@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div style="width:90%">
+    <h2>
+        <button class="btn btn-info pull-right ">@Html.ActionLink("Add Students", "Create")</button><br />
+    </h2>
+
+</div>
+
+<div>
+    <table id="jqGrid"></table>
+    <div id="jqControls"></div>
+</div>
+
+
+@*////////////////////////////////////////////////////////////////////////////////*@
+
+@*<div>
+    @{
+        Html.RenderPartial("_jqgrid");
+    }
+</div>*@
+
+
+
+@*<div style="width:90%;">
+    <table id="Jdatatable" class="table table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Class</th>
+                <th>RollNo</th>               
+                <th>StudentDetails</th>
+                <th>Act</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div>
+    <input type="button" class="btn btn-success" value="Load Data from API" id="btnLoad" />
+    <br /><br />
+    <div id="diplayPanel"></div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#Jdatatable").DataTable({
+            "ajax": {
+                "url": "Home/GetData",
+                "type": "GET",
+                "datatype":"json"
+            },
+            "columns": [
+
+                        { "data": "FirstName", "autoWidth": true },
+                        { "data": "LastName", "autoWidth": true },
+                        { "data": "Class", "autoWidth": true },
+                        { "data": "RollNo", "autoWidth": true },
+                        { "data": "studentdetails", "autoWidth": true },
+            {
+            data: null,
+        className: "center",
+        defaultContent: '<a href="../Home/Edit" class="editor_edit">Edit</a> | <a href="../Home/Detele" class="editor_remove">Delete</a>'
+    },
+            ]
+        });
+    });
+    </script>
+
+
+
+
+}*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<table id="gridMain"></table>
+<div id="pagernav">
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="/themes/redmond/jquery-ui-1.8.2.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/themes/ui.jqgrid.css" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.jqGrid.js"></script>
+<script src="~/Scripts/i18n/grid.locale-en.js"></script>
+<link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Content/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/scripts.js"></script>*@

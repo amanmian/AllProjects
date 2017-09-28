@@ -1,0 +1,143 @@
+﻿@model August_09_01_Full_application.Models.StudentWebTable
+
+@{
+    ViewBag.Title = "Create";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <!-- jQuery Reference (from CDN) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- jQueryUI Reference (from CDN) -->
+    <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+    <title>Create</title>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+           
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Stud_fname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Stud_fname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stud_fname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Stud_lname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Stud_lname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stud_lname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Stud_std, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Stud_std, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stud_std, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Stud_group, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Stud_group, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stud_group, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.Stud_cousre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Stud_cousre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stud_cousre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.age, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.studentdetails0002.Stud_area, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.studentdetails0002.Stud_area, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.studentdetails0002.Stud_area, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.studentdetails0002.Stud_street, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.studentdetails0002.Stud_street, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.studentdetails0002.Stud_street, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.studentdetails0002.Stud_city, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.studentdetails0002.Stud_city, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.studentdetails0002.Stud_city, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.studentdetails0002.Stud_zipcode, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.studentdetails0002.Stud_zipcode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.studentdetails0002.Stud_zipcode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="Create" value="Create" class="btn btn-success" />
+                    <input type="submit"  value="Reset" onclick="window.location.reload()" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $("#Create").click(function (e) {
+            e.preventDefault();
+            var Stud_fname = $("#Stud_fname").val();
+            var Stud_lname = $("#Stud_lname").val();
+            var Stud_std = $("#Stud_std").val();
+            var Stud_group = $("#Stud_group").val();
+            var Stud_cousre = $("#Stud_cousre").val();
+            var age = $("#age").val();
+            var Stud_area = $("#Stud_area").val();
+            var Stud_street = $("#Stud_street").val();
+            var Stud_city = $("#Stud_city").val();
+            var Stud_zipcode = $("#Stud_zipcode").val();
+            var dataString = 'Stud_fname=' + Stud_fname + '&Stud_lname=' + Stud_lname+'&Stud_std='+Stud_std+'&Stud_group='+Stud_group+'&Stud_cousre='+Stud_cousre+'&age='+age+'&Stud_area='+Stud_area+'&Stud_street='+Stud_street+'&Stud_city='+Stud_city+'&Stud_zipcode='+Stud_zipcode;
+            $.ajax({
+                type: 'POST',
+                data: dataString,
+                url: "http://localhost:59183/api/StudentWebApi",
+                success: function (data) {
+                    console.log(data);
+                    alert(data);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

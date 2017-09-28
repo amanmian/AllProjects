@@ -1,0 +1,102 @@
+﻿@model Project4thAug.Models.Information
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+    <h2>Index</h2>
+    <!--Add Jquery Datatable reference files-->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.14/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://editor.datatables.net/extensions/Editor/css/editor.bootstrap.min.css">
+
+    <div style="width:90%;">
+        <button type="button">  @Html.ActionLink("Add Employee", "Add")</button>
+        <table id="Jdatatable" class="table table-responsive table-bordered">
+            <thead>
+                <tr>
+                    <th> Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Marital Status</th>
+                    <th>Action</th>
+                   
+
+                </tr>
+            </thead>
+        </table>
+        <div id="suraj">
+ 
+        </div>
+    </div>
+    @section scripts{
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+<script type="text/javascript" src="https://editor.datatables.net/extensions/Editor/js/editor.bootstrap.min.js"></script>
+        <script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#Jdatatable").DataTable({
+            "ajax": {
+                "url": "/Home/GetData",
+                "type": "GET",
+                "datatype": "json"
+
+            },
+            
+            "columns": [
+                        { "data": "Name", "autoWidth": true },
+                        { "data": "Phone", "autoWidth": true },
+                        { "data": "Email", "autoWidth": true },
+                         {
+                             data:   "MariStatus",
+                             "mRender": function (data, type, full) {
+                                 if (data == "1") {
+                                     return '<input type=\"checkbox\" checked value="' + data + '">';
+                                 } else {
+                                     return '<input type=\"checkbox\" value="' + data + '">';
+                                 }
+                             }
+                         },
+
+            {
+                data: null,
+
+        className: "center",
+        defaultContent: '<a href=" Edit" class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
+    }
+
+            ],
+            rowCallback: function (row, data) {
+                // Set the checked state of the checkbox in the table
+                $('input.editor-active', row).prop('checked', data.active == 1);
+            }
+
+        });
+    });
+   
+
+    // Delete a record
+    $('Jdatatable').on('click', 'a.editor_remove', function (e) {
+        e.preventDefault();
+
+        editor.remove($(this).closest('tr'), {
+            title: 'Delete record',
+            message: 'Are you sure you wish to remove this record?',
+            buttons: 'Delete'
+        });
+    });
+        </script>
+    }

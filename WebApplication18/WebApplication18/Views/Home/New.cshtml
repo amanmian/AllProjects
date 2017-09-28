@@ -1,0 +1,62 @@
+﻿
+
+
+@model WebApplication18.Models.Userviewmodel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New User</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Name)
+        @Html.TextBoxFor(m => m.user.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Email)
+        @Html.TextBoxFor(m => m.user.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m=>m.user.Birthday)
+    @Html.TextBox("Date_of_Birth", Model.user.Birthday, new { @class = "datepicker", @type = "date" })
+        @Html.ValidationMessageFor(m => m.user.Email)
+        </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Country)
+        @Html.DropDownListFor(m => m.user.Country, new SelectList(Model.List, "country"), "select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.Country)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.State)
+
+        @Html.DropDownListFor(m => m.user.State, new SelectList(Model.List,  "state"), "select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.State)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Address)
+
+        @Html.TextAreaFor(m => m.user.Address,  new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.Address)
+    </div>
+
+
+    @Html.HiddenFor(m => m.user.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-primary">Restart</button>
+}
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+﻿@model WebApplication4.Models.Customer
+
+@{
+    ViewBag.Title = "DETAILS";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body class="container">
+    <h1>DETAILS</h1>
+    <div>
+        <h4>Customer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+           </dl>
+            <dl class="dl-horizontal">
+             <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

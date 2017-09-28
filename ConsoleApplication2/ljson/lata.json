@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 1,
+    "Name": "John",
+    "Email": "john@gmail.com",
+    "phone": 789018,
+    "age": 39
+  },
+  {
+    "Id": 2,
+    "Name": "Alex",
+    "Email": "alex@gmail.com",
+    "phone": 7684919,
+    "age": 17
+  },
+  {
+    "Id": 3,
+    "Name": "James",
+    "Email": "james@gmail.com",
+    "phone": 1078960,
+    "age": 13
+  },
+  {
+    "Id": 4,
+    "Name": "Chef ",
+    "Email": "Chef@rediffmail.com",
+    "phone": 34567322,
+    "age": 53
+  },
+  {
+    "Id": 4,
+    "Name": "lata ",
+    "Email": "lata@rediffmail.com",
+    "phone": 3456722,
+    "age": 21
+  },
+  {
+    "Id": 4,
+    "Name": "medha",
+    "Email": "medha@rediffmail.com",
+    "phone": 34567422,
+    "age": 53
+  },
+  {
+    "Id": 4,
+    "Name": "puja ",
+    "Email": "puja@rediffmail.com",
+    "phone": 6,
+    "age": 32
+  },
+  {
+    "Id": 4,
+    "Name": "pooja ",
+    "Email": "pooja@rediffmail.com",
+    "phone": 3456722,
+    "age": 17
+  },
+  {
+    "Id": 4,
+    "Name": "alpit",
+    "Email": "alpit@rediffmail.com",
+    "phone": 3456722,
+    "age": 32
+  },
+  {
+    "Id": 4,
+    "Name": "diksha ",
+    "Email": "diksha@rediffmail.com",
+    "phone": 3456722,
+    "age": 45
+  }
+]

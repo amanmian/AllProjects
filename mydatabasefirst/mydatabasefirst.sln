@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mydatabasefirst", "mydatabasefirst\mydatabasefirst.csproj", "{3A87AEDE-8515-498D-AAC2-EB22DA3DD284}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F8145E4-34FD-490C-9FCE-3362C328377C}"
+	ProjectSection(SolutionItems) = preProject
+		mydatabasefirst\faculty.cs = mydatabasefirst\faculty.cs
+		mydatabasefirst\model.Context.cs = mydatabasefirst\model.Context.cs
+		mydatabasefirst\model.cs = mydatabasefirst\model.cs
+		mydatabasefirst\model.Designer.cs = mydatabasefirst\model.Designer.cs
+		mydatabasefirst\student.cs = mydatabasefirst\student.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A87AEDE-8515-498D-AAC2-EB22DA3DD284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A87AEDE-8515-498D-AAC2-EB22DA3DD284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A87AEDE-8515-498D-AAC2-EB22DA3DD284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A87AEDE-8515-498D-AAC2-EB22DA3DD284}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

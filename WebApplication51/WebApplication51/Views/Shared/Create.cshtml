@@ -1,0 +1,257 @@
+﻿@model WebApplication51.Models.ViewModel
+
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <!-- jQuery Reference (from CDN) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- jQueryUI Reference (from CDN) -->
+    <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+</head>
+<body>
+   
+@using (Html.BeginForm())
+{
+           
+             
+                   
+<div class="form-horizontal">
+
+   <hr />
+
+   @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+
+  <div class="form-group">
+
+
+
+   @Html.LabelFor(model => model.customers.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+      <div class="col-md-10">
+  @Html.EditorFor(model => model.customers.Id, new { htmlAttributes = new { @class = "form-control" } })
+  @Html.ValidationMessageFor(model => model.customers.Id, "", new { @class = "text-danger" })
+       </div>
+           </div>
+
+       <div class="form-group">
+      @Html.LabelFor(model => model.customers.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+      @Html.EditorFor(model => model.customers.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+       @Html.ValidationMessageFor(model => model.customers.FirstName, "", new { @class = "text-danger" })
+      </div>
+        </div>
+           <div class="form-group">
+         @Html.LabelFor(model => model.customers.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+         <div class="col-md-10">
+          @Html.EditorFor(model => model.customers.LastName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.customers.LastName, "", new { @class = "text-danger" })
+         </div>
+         </div>
+    <div class="form-group">
+     @Html.LabelFor(model => model.customers.RollNo, htmlAttributes: new { @class = "control-label col-md-2" })
+      <div class="col-md-10">
+       @Html.EditorFor(model => model.customers.RollNo, new { htmlAttributes = new { @class = "form-control" } })
+         @Html.ValidationMessageFor(model => model.customers.RollNo, "", new { @class = "text-danger" })
+         </div>
+        </div>
+
+       <div class="form-group">
+     @Html.LabelFor(model => model.customers.Class, htmlAttributes: new { @class = "control-label col-md-2" })
+       <div class="col-md-10">
+     @Html.EditorFor(model => model.customers.Class, new { htmlAttributes = new { @class = "form-control" } })
+       @Html.ValidationMessageFor(model => model.customers.Class, "", new { @class = "text-danger" })
+           </div>
+       </div>
+       <div class="form-group">
+      @Html.LabelFor(model => model.customerdetails.FatherName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+      @Html.EditorFor(model => model.customerdetails.FatherName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.customerdetails.FatherName, "", new { @class = "text-danger" })
+       </div>
+        </div>
+     <div class="form-group">
+      @Html.LabelFor(model => model.customerdetails.MotherName, htmlAttributes: new { @class = "control-label col-md-2" })
+      <div class="col-md-10">
+      @Html.EditorFor(model => model.customerdetails.MotherName, new { htmlAttributes = new { @class = "form-control" } })
+  @Html.ValidationMessageFor(model => model.customerdetails.MotherName, "", new { @class = "text-danger" })
+       </div>
+    </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.customerdetails.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+  <div class="col-md-10">
+    @Html.EditorFor(model => model.customerdetails.Address, new { htmlAttributes = new { @class = "form-control" } })
+  @Html.ValidationMessageFor(model => model.customerdetails.Address, "", new { @class = "text-danger" })
+  </div>
+ </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.customerdetails.PhoneNum, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+   @Html.EditorFor(model => model.customerdetails.PhoneNum, new { htmlAttributes = new { @class = "form-control" } })
+   @Html.ValidationMessageFor(model => model.customerdetails.PhoneNum, "", new { @class = "text-danger" })
+    </div>
+    </div>
+
+  <div class="form-group">
+   <div class="col-md-offset-2 col-md-10">
+   <input type="submit" id="Create" value="Create" class="btn btn-success" />
+   <input type="submit" value="Reset" onclick="window.location.reload()" class="btn btn-danger" />
+    </div>
+   </div>
+   </div>
+
+                      
+                  
+
+                
+            
+}
+    <script type="text/javascript">
+        (function () {
+    var viewModel = function () {
+        var self = this;
+
+        var IsUpdatable= false;
+
+        self.PersonId = ko.observable(0);
+        self.FirstName = ko.observable("");
+        self.MiddleName = ko.observable("");
+        self.LastName = ko.observable("");
+        self.Address = ko.observable("");
+        self.City = ko.observable("");
+        self.State = ko.observable("");
+        self.PhoneNo = ko.observable("");
+        self.MobileNo = ko.observable("");
+        self.EmailAddress = ko.observable("");
+        self.Occupation = ko.observable("");
+
+
+        var PersonInfo = {
+            PersonId: self.PersonId,
+            FirstName: self.FirstName,
+            MiddleName: self.MiddleName,
+            LastName: self.LastName,
+            Address: self.Address,
+            City: self.City,
+            State: self.State,
+            PhoneNo: self.PhoneNo,
+            MobileNo: self.MobileNo,
+            EmailAddress: self.EmailAddress,
+            Occupation: self.Occupation
+        };
+
+        self.Persons = ko.observable([]);
+
+        self.Message = ko.observable("");
+
+        self.Occupations =ko.observableArray(["Employeed","Self-Employeed","Doctor","Teacher","Other"]);
+        self.SelectedOccupation = ko.observable();
+
+        self.SelectedOccupation.subscribe(function (text) {
+            self.Occupation(text);
+        });
+
+
+        self.States = ko.observableArray(["Jammu and Kashmir", "Delhi", "Himachal Pradesh",
+        "Uttarakhand", "Punjab", "Hariyana", "Uttar Pradesh", "Rajasthan",
+        "Madhya Pradesh", "Odissa", "Assam", "Arunchal Pradesh", "Manipur",
+        "Mizoram", "Tripura", "Manupur", "Nagaland", "Jharkhand", "Bihar", "Sikkim",
+        "Maharashtra", "Gujarat", "GOA", "Karnatak", "Telangana", "Simandhra",
+        "Tamilnadu","Kerla","Andaman and Nikobar"]);
+
+        self.SelectedState = ko.observable();
+
+        self.SelectedState.subscribe(function (text) {
+            self.State(text);
+        });
+
+
+
+
+        loadInformation();
+
+        function loadInformation() {
+
+            $.ajax({
+                url: "/api/PersonAPI",
+                type:"GET"
+            }).done(function (resp) {
+                self.Persons(resp);
+            }).error(function (err) {
+                self.Message("Error! " + err.status);
+            });
+        }
+
+        self.getSelected = function (per) {
+            self.PersonId(per.PersonId);
+            self.FirstName(per.FirstName);
+            self.MiddleName(per.MiddleName);
+            self.LastName(per.LastName);
+            self.Address(per.Address);
+            self.City(per.City);
+            self.State(per.State);
+            self.PhoneNo(per.PhoneNo);
+            self.MobileNo(per.MobileNo);
+            self.EmailAddress(per.EmailAddress);
+            self.Occupation(per.Occupation);
+            IsUpdatable = true;
+            $("#modalbox").modal("show");
+        }
+
+        self.save = function () {
+            if (!IsUpdatable) {
+
+                $.ajax({
+                    url: "/api/PersonAPI",
+                    type: "POST",
+                    data: PersonInfo,
+                    datatype: "json",
+                    contenttype: "application/json;utf-8"
+                }).done(function (resp) {
+                    self.PersonId(resp.PersonId);
+                    $("#modalbox").modal("hide");
+                    loadInformation();
+                }).error(function (err) {
+                    self.Message("Error! " + err.status);
+                });
+            } else {
+                $.ajax({
+                    url: "/api/PersonAPI/"+self.PersonId(),
+                    type: "PUT",
+                    data: PersonInfo,
+                    datatype: "json",
+                    contenttype: "application/json;utf-8"
+                }).done(function (resp) {
+                    $("#modalbox").modal("hide");
+                    loadInformation();
+                    IsUpdatable = false;
+                }).error(function (err) {
+                    self.Message("Error! " + err.status);
+                    IsUpdatable = false;
+                });
+
+            }
+        }
+
+        self.delete = function (per) {
+            $.ajax({
+                url: "/api/PersonAPI/" + per.PersonId,
+                type: "DELETE",
+            }).done(function (resp) {
+                loadInformation();
+            }).error(function (err) {
+                self.Message("Error! " + err.status);
+            });
+        }
+
+    };
+    ko.applyBindings(new viewModel());
+})();
+        </script>
+
+
+
+       </body>
+</html>

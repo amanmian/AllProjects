@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "_jqgrid";
+}
+
+<div style="width:90%;">
+    <table id="Jdatatable" class="table table-responsive table-bordered">
+        <thead>
+            <tr>               
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Class</th>
+                <th>RollNo</th>
+                <th>City</th>
+                <th>StudentDetails</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#Jdatatable").DataTable({
+            "ajax": {
+                "url": "http://localhost:60397/api/Students",
+                "type": "GET",
+                "datatype":"json"
+            },
+            "columns": [
+
+                        { "data": "FirstName", "autoWidth": true },
+                        { "data": "LastName", "autoWidth": true },
+                        { "data": "Class", "autoWidth": true },
+                        { "data": "RollNo", "autoWidth": true },
+                        { "data": "studentdetails", "autoWidth": true },
+                        { "data": null, "defaultContent": "<input type='button' value='Edit'>", "autoWidth": true },
+                        { "data": null, "defaultContent": "<input type='button' value='Delete'>", "autoWidth": true }
+            ]
+        });
+    });
+</script>
+}

@@ -1,0 +1,80 @@
+﻿
+
+
+@model WebApplication20.Models.Userviewmodel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.datepicker').datepicker({showAnim: "fadeIn"});
+	})
+</script>
+<h2>New User</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Name)
+        @Html.TextBoxFor(m => m.user.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Email)
+        @Html.TextBoxFor(m => m.user.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Birthday)
+        @* @Html.TextBox("Date_of_Birth", Model.detail.DateOfBirth, new { @class = "datepicker form-control" })*@
+        @Html.TextBoxFor(m => m.user.Birthday, new { @class = "datepicker form-control" })
+        @Html.ValidationMessageFor(m => m.user.Birthday)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.user.Country)
+        @Html.DropDownListFor(m => m.user.Country, new SelectList(Model.List, "Country"), "select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.user.Country)
+    </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.user.State)
+
+            @Html.DropDownListFor(m => m.user.State, new SelectList(Model.List, "State"), "select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.user.State)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.user.Address)
+
+            @Html.TextBoxFor(m => m.user.Address, new
+       {
+                @class = "form-control",
+           TextMode = "MultiLine",
+           Columns = "55",
+           Rows = "10",
+           type = "text",
+           required = "required"
+       })
+            @Html.ValidationMessageFor(m => m.user.Address)
+        </div>
+
+
+        @Html.HiddenFor(m => m.user.Id)
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="reset" class="btn btn-primary">Restart</button>
+}
+
+
+
+
+
+

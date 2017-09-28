@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Part1";
+}
+
+<h2>Part1 - Fetch data from WebApi using jquery</h2>
+
+
+<div>
+    <div style="padding:10px">
+        <input id="btnGetData" type="button" value="Fetch data from WebApi" class="btn btn-default" />
+    </div>
+    <div id="updatePanel" style="width:90%; margin:0 auto; padding:10px">
+
+    </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var apiBaseUrl = "http://localhost:59820/api/Students";
+            $('#btnGetData').click(function () {
+                $.ajax({
+                    url: apiBaseUrl,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                  var $table = $('<table/>').addClass('table table-responsive table-striped table-bordered');
+                        var $header = $('<thead/>').html('<tr><th>StuId</th><th>Fname</th><th>Lname</th><th>division</th><th>Email</th><th>Phone</th><th>FathersName</th><th>Address</th></tr>');
+                        $table.append($header);
+                        $.each(data, function (i, val) {
+                            var $row = $('<tr/>');
+
+                                            $row.append($('<td/>').html(val.StuId));
+
+
+                            $row.append($('<td/>').html(val.Fname));
+                            $row.append($('<td/>').html(val.Lname));
+                            $row.append($('<td/>').html(val.division));
+
+                            $row.append($('<td/>').html(val.Email));
+                            $row.append($('<td/>').html(val.phone));
+                            $row.append($('<td/>').html(val.FathersName));
+
+                            $row.append($('<td/>').html(val.Address));
+
+
+
+                            $table.append($row);
+                        });
+                        $('#updatePanel').html($table);
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            });
+        });
+    </script>
+}

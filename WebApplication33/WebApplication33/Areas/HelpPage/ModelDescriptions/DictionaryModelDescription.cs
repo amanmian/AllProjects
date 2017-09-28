@@ -1,0 +1,6 @@
+namespace WebApplication33.Areas.HelpPage.ModelDescriptions
+{
+    public class DictionaryModelDescription : KeyValuePairModelDescription
+    {
+    }
+}
